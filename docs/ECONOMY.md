@@ -6,7 +6,7 @@ The goal is a recognisable market economy at small scale. Five to ten players sh
 
 **Fisher Pound (£)** — handled by CMI's Vault-compatible economy module.
 
-Starting grant: £100 per new player. Enough for a few days' food, not enough to buy a house.
+Starting grant: £25 per new player. Enough for a few days' food, not enough to buy a house.
 
 ## The Money Supply
 
@@ -22,7 +22,7 @@ Rough target: net neutral at week scale once the server is seeded. Track via `/b
 
 ## Labour: Jobs Reborn
 
-Seven jobs. Pick two per player at a time. Switching costs £50 to stop farming the same job cheaply.
+Seven jobs. Pick two per player at a time. Switching costs £10 to stop farming the same job cheaply.
 
 - **Miner** — paid per ore broken, scaling with rarity
 - **Farmer** — paid per crop harvested
@@ -32,7 +32,7 @@ Seven jobs. Pick two per player at a time. Switching costs £50 to stop farming 
 - **Fisherman** — paid per fish caught
 - **Enchanter** — paid per item enchanted, scaled by level
 
-Players can also post **private contracts** via the bounty board (Discord command or plugin): "£500 to anyone who brings me 4 stacks of iron by Sunday." This is the real labour market.
+Players can also post **private contracts** via the bounty board (Discord command or plugin): "£80 to anyone who brings me 4 stacks of iron by Sunday." This is the real labour market.
 
 ## Property: Towny
 
@@ -68,7 +68,7 @@ Two flavours:
 
 **Index stocks** — proxies for real-world materials (`IRON`, `GOLD`, `DIAMOND`), prices move on a slow random walk daily. Purely speculative.
 
-**Player stocks** — any player-owned shop with £5000+ in weekly revenue can IPO. Issue up to 100 shares. Dividend pays out weekly from 10% of shop revenue. Share price floats based on trades on the exchange.
+**Player stocks** — any player-owned shop with £500+ in weekly revenue can IPO. Issue up to 100 shares. Dividend pays out weekly from 10% of shop revenue. Share price floats based on trades on the exchange.
 
 This is the thing most SMPs don't have, and it's what turns the economy from "shops" into "capitalism."
 
@@ -86,9 +86,9 @@ Without drains, everyone ends up rich and nothing matters. The drains:
 
 - **Rent** — the big one, steady daily bleed
 - **Auction cut** — 5% of big-ticket trades
-- **Cosmetics** — pets, particle trails, custom chat colours, custom death messages. Pure vanity, nothing gameplay-altering. £500–£5000 each.
-- **Fast travel** — warps cost £10–£50 depending on distance. Free for the first 30 days per player.
-- **Revive insurance** — optional £20/week subscription that keeps your XP on death.
+- **Cosmetics** — pets, particle trails, custom chat colours, custom death messages. Pure vanity, nothing gameplay-altering. £50–£500 each.
+- **Fast travel** — warps cost £2–£10 depending on distance. Free for the first 30 days per player.
+- **Revive insurance** — optional £5/week subscription that keeps your XP on death.
 
 ## The Role of the Author
 

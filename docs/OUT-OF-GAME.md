@@ -6,7 +6,7 @@ The novel part. Real-world effort → in-game currency. This is what makes the s
 
 A Minecraft economy is a closed system. Everyone mines, everyone trades, eventually balances equalise. Injecting currency from outside the game adds a second axis — real life — and dramatically widens who can participate.
 
-Your girlfriend doesn't want to spend 3 hours mining cobble. She *does* want to buy a cat with pink particles. If doing the washing up earns her £50 Fisher Pounds, both of you win.
+Your girlfriend doesn't want to spend 3 hours mining cobble. She *does* want to buy a cat with pink particles. If doing the washing up earns her £5 Fisher Pounds, both of you win.
 
 ## Architecture
 
@@ -36,18 +36,18 @@ See [bridge/](../bridge/) for a working sketch.
 ## Earning Mechanisms
 
 ### 1. Daily Check-in
-- One free £10 per day for opening the site and clicking the button.
-- Streak bonus: 7-day streak = +£50, 30-day = +£500.
+- One free £3 per day for opening the site and clicking the button.
+- Streak bonus: 7-day streak = +£10, 30-day = +£75.
 - Prevents grinding. Rewards habit.
 
 ### 2. Real-World Chore Verification
 - Discord bot posts "did you actually do the dishes?" prompts.
 - Partner confirms with a reaction. Bot fires bridge webhook. Coins credited.
 - Works for household chores, gym sessions, study hours, anything the group agrees on.
-- Rates set per-category in config. Dishes = £20. Gym session = £50. Two hours of coaching prep = £100.
+- Rates set per-category in config. Dishes = £5. Gym session = £12. Two hours of coaching prep = £20.
 
 ### 3. Mini-Games (on the Pages site)
-Four small browser games, each capped at £50/day per player to prevent botting:
+Four small browser games, each capped at £10/day per player to prevent botting:
 - **Block Breaker** — quick reaction clicker, pays per block broken
 - **Ore Sorter** — memory/matching, pays per round completed
 - **Price Guesser** — guess the current in-game market price of an item, pays per correct guess (also surfaces real market data to players)
@@ -55,11 +55,11 @@ Four small browser games, each capped at £50/day per player to prevent botting:
 
 ### 4. Coaching / Cambly Hours Logged
 - Seb's coaching and Cambly hours can be self-reported on the site (honour system among friends).
-- Converts at £1 Fisher per £1 real. Thematic, not balance-breaking — caps at £200/day.
+- Converts at £1 Fisher per £1 real. Thematic, not balance-breaking — caps at £40/day.
 - Also just a nice way to motivate grinding real work by gamifying it.
 
 ### 5. Bug Bounty
-- Anyone who reports a server exploit or docs typo and gets it merged: £500–£5000 depending on severity.
+- Anyone who reports a server exploit or docs typo and gets it merged: £50–£500 depending on severity.
 
 ## Anti-Abuse
 

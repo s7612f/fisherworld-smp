@@ -40,19 +40,19 @@ These are conservative. Adjust after week 1 based on balance top.
 
 | Jobs Reborn job | Pay per action |
 |---|---|
-| Miner — coal | £0.10 |
-| Miner — iron | £0.50 |
-| Miner — gold | £1.20 |
-| Miner — diamond | £8.00 |
-| Farmer — wheat | £0.08 |
-| Farmer — carrot/potato | £0.12 |
-| Woodcutter — oak log | £0.04 |
-| Builder — block placed | £0.02 (capped 500/day) |
-| Hunter — zombie/skeleton | £0.15 |
-| Hunter — creeper | £0.40 |
-| Fisherman — fish caught | £0.30 |
+| Miner — coal | £0.02 |
+| Miner — iron | £0.10 |
+| Miner — gold | £0.25 |
+| Miner — diamond | £1.50 |
+| Farmer — wheat | £0.02 |
+| Farmer — carrot/potato | £0.03 |
+| Woodcutter — oak log | £0.01 |
+| Builder — block placed | £0.005 (capped 500/day) |
+| Hunter — zombie/skeleton | £0.04 |
+| Hunter — creeper | £0.10 |
+| Fisherman — fish caught | £0.08 |
 
-**Targets at week 1:** active player earns £50–£150/day from Jobs alone. Plot rent in Saffron town: £20/day. That means you need to actually play to keep your house — but it's not punishing.
+**Targets at week 1:** active player earns £10–£30/day from Jobs alone. Plot rent in Saffron town: £5/day. That means you need to actually play to keep your house — but it's not punishing.
 
 ---
 
@@ -61,7 +61,7 @@ These are conservative. Adjust after week 1 based on balance top.
 People don't want to be first. Give them something to react to.
 
 - Build a small market district in Saffron with 3–4 chest shops stocked with starter goods
-- Post two open bounties in `#bounty-board` (e.g. "£200 for 2 stacks of iron — DM me")
+- Post two open bounties in `#bounty-board` (e.g. "£40 for 2 stacks of iron — DM me")
 - Make the stock ticker on the site show real (even if manually seeded) prices
 - Write a changelog entry dated launch day. Makes it feel like a real project.
 
@@ -75,7 +75,7 @@ Target: 4–6 players, people you can actually talk to.
 
 Don't just share an IP. Send a proper invite — Discord DM or voice call — that explains what makes this different. Something like:
 
-> "I've set up a Minecraft server but it actually has an economy — you can own land, run shops, buy shares in other people's shops. There's also a website where you can earn in-game money by doing real stuff. Girlfriend has been earning by logging gym sessions. First 10 people in get a plot in the starter town and £500 starting cash."
+> "I've set up a Minecraft server but it actually has an economy — you can own land, run shops, buy shares in other people's shops. There's also a website where you can earn in-game money by doing real stuff. Girlfriend has been earning by logging gym sessions. First 10 people in get a plot in the starter town and £25 starting cash."
 
 The website is your hook. "There's a site" makes it feel real and different from every other SMP invite.
 
@@ -83,7 +83,7 @@ The website is your hook. "There's a site" makes it feel real and different from
 
 - [ ] Send them the site URL + Discord invite before the server IP
 - [ ] Walk them through `/weblink` → account link in the first session
-- [ ] Give them the starter pack: £100 cash, basic tools from the admin shop
+- [ ] Give them the starter pack: £25 cash, basic tools from the admin shop
 - [ ] Show them the bounty board. Explain that other players will pay for work.
 - [ ] Show them one chest shop. Let them buy something.
 
