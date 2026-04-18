@@ -125,13 +125,13 @@ function renderStocks() {
 
 // ---------- ledger ----------
 const LEDGER_SEED = [
-  { user: "Sebastian", amount: 50, reason: "gym session (verified)", ago: "2m" },
-  { user: "Lola", amount: 20, reason: "dishes (verified by Sebastian)", ago: "14m" },
-  { user: "Tom", amount: 10, reason: "daily check-in", ago: "1h" },
-  { user: "Lola", amount: 35, reason: "block breaker minigame", ago: "2h" },
-  { user: "Sebastian", amount: 100, reason: "2h coaching prep logged", ago: "4h" },
-  { user: "Tom", amount: 500, reason: "bug bounty: quickshop price parse", ago: "1d" },
-  { user: "Lola", amount: 50, reason: "gym session (verified)", ago: "1d" },
+  { user: "Sebastian", amount: 12, reason: "gym session (verified)", ago: "2m" },
+  { user: "Lola", amount: 5, reason: "dishes (verified by Sebastian)", ago: "14m" },
+  { user: "Tom", amount: 3, reason: "daily check-in", ago: "1h" },
+  { user: "Lola", amount: 8, reason: "block breaker minigame", ago: "2h" },
+  { user: "Sebastian", amount: 20, reason: "2h coaching prep logged", ago: "4h" },
+  { user: "Tom", amount: 75, reason: "bug bounty: quickshop price parse", ago: "1d" },
+  { user: "Lola", amount: 12, reason: "gym session (verified)", ago: "1d" },
 ];
 function renderLedger() {
   const tbody = $("#ledger-body");
@@ -168,8 +168,8 @@ function renderEarn() {
     if (!user) { alert("link your account first"); return; }
     localStorage.setItem(claimedKey, "1");
     daily.disabled = true;
-    daily.textContent = "claimed today ✓ +£10";
-    logEarn(`+£10 daily check-in`);
+    daily.textContent = "claimed today ✓ +£3";
+    logEarn(`+£3 daily check-in`);
   });
 
   setupBlockBreaker();
@@ -237,7 +237,7 @@ function setupBlockBreaker() {
       running = false;
       startBtn.disabled = false;
       startBtn.textContent = "play again";
-      const earned = Math.min(score * 2, 50);
+      const earned = Math.min(Math.round(score * 0.5 * 10) / 10, 10);
       logEarn(`+£${earned} block breaker (${score} hits)`);
       alert(`round over — ${score} hits = £${earned}`);
     }, 20000);
