@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fisherworld SMP</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="block grass"></span>
+    <span class="title">FISHERWORLD</span>
+    <span class="sub">/ capitalism with blocks</span>
+  </div>
+  <nav>
+    <a href="index.html" class="active">Home</a>
+    <a href="market.html">Market</a>
+    <a href="stocks.html">Stocks</a>
+    <a href="earn.html">Earn</a>
+    <a href="ledger.html">Ledger</a>
+    <a href="https://github.com/SebastianFisher/fisherworld-smp" target="_blank" rel="noopener">GitHub</a>
+  </nav>
+</header>
+
+<main class="stack">
+
+  <section class="panel hero">
+    <h1>A Minecraft server<br/>with a <em>real</em> economy.</h1>
+    <p class="lede">
+      Player shops. Stock markets. Property taxes. Wage labour. Loans.
+      And a web layer that credits your in-game account for doing real things outside the game.
+    </p>
+    <div class="ticker" id="ticker" aria-live="polite">
+      <span>IRON £12.40 ▲</span>
+      <span>GOLD £31.10 ▼</span>
+      <span>DIAMOND £184.00 ▲</span>
+      <span>WHEAT £0.90 ▬</span>
+      <span>NETHERITE £612.50 ▲</span>
+      <span>EMERALD £44.00 ▼</span>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>The three layers</h2>
+    <div class="cards">
+      <article>
+        <h3>① Survival</h3>
+        <p>Vanilla 1.21.x. No fly, no teleport-to-anywhere, death still hurts. The block game stays sacred.</p>
+      </article>
+      <article>
+        <h3>② Economy</h3>
+        <p>Towny land with rent. Jobs Reborn wages. QuickShop chest shops. Banks with interest. A stock market with player IPOs.</p>
+      </article>
+      <article>
+        <h3>③ Web</h3>
+        <p>This site. Link your MC account, then earn Fisher Pounds via chores, daily check-ins, coaching-hours logged, and minigames.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Why this should work</h2>
+    <ul class="bullets">
+      <li><b>Inflation discipline</b> — taps (wages, web earnings) balanced by drains (rent, fees, cosmetics).</li>
+      <li><b>Asymmetric roles</b> — miner, farmer, builder, shopkeeper, landlord, financier. The market rewards specialising.</li>
+      <li><b>Real stakes</b> — miss three days of rent, lose your house. That's the line between a game and a diorama.</li>
+      <li><b>Low-friction on-ramp</b> — a non-gamer partner can do dishes, earn coins, buy cosmetics, feel part of it.</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>The plan, at a glance</h2>
+    <ol class="phases">
+      <li><b>Phase 0</b> — Paper server up on fisherserver, playtest with 2.</li>
+      <li><b>Phase 1</b> — CMI + QuickShop + Jobs Reborn + BlueMap. Baseline economy.</li>
+      <li><b>Phase 2</b> — Towny. Land, rent, taxes.</li>
+      <li><b>Phase 3</b> — Auction house, stock market, banks with interest, bounty board.</li>
+      <li><b>Phase 4</b> — Web layer. This site + bridge service + Discord bot.</li>
+      <li><b>Phase 5</b> — Tune, adjust, add money sinks, run events.</li>
+    </ol>
+    <p class="note">Full write-ups in the <a href="https://github.com/SebastianFisher/fisherworld-smp/blob/main/docs/PLAN.md">repo docs</a>.</p>
+  </section>
+
+  <section class="panel link-box">
+    <h2>Link your account</h2>
+    <p>In-game, run <code>/weblink</code> to get a 6-digit code. Paste it here with your username.</p>
+    <form id="linkform" onsubmit="return handleLink(event)">
+      <label>Minecraft username <input required name="username" placeholder="Steve_" /></label>
+      <label>Code <input required name="code" placeholder="123456" pattern="[0-9]{6}" /></label>
+      <button type="submit">Link</button>
+    </form>
+    <p id="linkstatus" class="status"></p>
+  </section>
+
+</main>
+
+<footer>
+  <span>£ Fisher Pound · </span>
+  <span>Made in Saffron Walden · </span>
+  <span><a href="https://github.com/SebastianFisher/fisherworld-smp">source</a></span>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

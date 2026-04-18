@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Stocks — Fisherworld SMP</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="block grass"></span>
+    <span class="title">FISHERWORLD</span>
+    <span class="sub">/ stocks</span>
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="market.html">Market</a>
+    <a href="stocks.html" class="active">Stocks</a>
+    <a href="earn.html">Earn</a>
+    <a href="ledger.html">Ledger</a>
+    <a href="https://github.com/SebastianFisher/fisherworld-smp" target="_blank" rel="noopener">GitHub</a>
+  </nav>
+</header>
+<main class="stack">
+  <section class="panel">
+    <h1>Stock Exchange</h1>
+    <p class="note">Index stocks track materials on a slow random walk. Player IPOs are shares in actual player-owned shops, paying weekly dividends from shop revenue.</p>
+  </section>
+  <section class="panel">
+    <table class="mc">
+      <thead>
+        <tr><th>Symbol</th><th>Name</th><th>Price</th><th>24h</th></tr>
+      </thead>
+      <tbody id="stocks-body"></tbody>
+    </table>
+  </section>
+  <section class="panel">
+    <h2>How to IPO your shop</h2>
+    <ol>
+      <li>Your QuickShop must have at least £5,000 in weekly revenue.</li>
+      <li>Run <code>/ipo &lt;ticker&gt; &lt;shares&gt; &lt;price&gt;</code> in-game.</li>
+      <li>10% of weekly shop revenue is paid to shareholders as dividend.</li>
+      <li>You keep majority control as long as you hold &gt;50% of shares.</li>
+    </ol>
+  </section>
+</main>
+<footer>
+  <span>£ Fisher Pound · </span>
+  <span>Made in Saffron Walden · </span>
+  <span><a href="https://github.com/SebastianFisher/fisherworld-smp">source</a></span>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
