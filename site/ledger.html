@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ledger — Fisherworld SMP</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="block grass"></span>
+    <span class="title">FISHERWORLD</span>
+    <span class="sub">/ ledger</span>
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="market.html">Market</a>
+    <a href="stocks.html">Stocks</a>
+    <a href="earn.html">Earn</a>
+    <a href="ledger.html" class="active">Ledger</a>
+    <a href="https://github.com/SebastianFisher/fisherworld-smp" target="_blank" rel="noopener">GitHub</a>
+  </nav>
+</header>
+<main class="stack">
+  <section class="panel">
+    <h1>Public Ledger</h1>
+    <p class="note">Every web-layer payout, visible to everyone. If someone's farming, the group sees it. Anti-abuse via transparency.</p>
+  </section>
+  <section class="panel">
+    <table class="mc">
+      <thead>
+        <tr><th>When</th><th>Player</th><th>Amount</th><th>Reason</th></tr>
+      </thead>
+      <tbody id="ledger-body"></tbody>
+    </table>
+  </section>
+</main>
+<footer>
+  <span>£ Fisher Pound · </span>
+  <span>Made in Saffron Walden · </span>
+  <span><a href="https://github.com/SebastianFisher/fisherworld-smp">source</a></span>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
