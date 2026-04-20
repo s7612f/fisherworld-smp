@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Stocks — Fisherworld SMP</title>
+<title>Stocks - Fisherworld SMP</title>
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -24,10 +24,13 @@
   </nav>
 </header>
 <main class="stack">
+
   <section class="panel">
     <h1>Stock Exchange</h1>
-    <p class="note">Index stocks track materials on a slow random walk. Player IPOs are shares in actual player-owned shops, paying weekly dividends from shop revenue.</p>
+    <p>Index stocks track raw materials and drift with supply and demand. Player IPOs are shares in actual player-owned shops. Owning shares earns you a cut of that shop's weekly revenue.</p>
+    <p class="note">Prices update weekly. Once the bridge is live, live data will appear here.</p>
   </section>
+
   <section class="panel">
     <table class="mc">
       <thead>
@@ -36,19 +39,28 @@
       <tbody id="stocks-body"></tbody>
     </table>
   </section>
+
   <section class="panel">
-    <h2>How to IPO your shop</h2>
-    <ol>
-      <li>Your QuickShop must have at least £5,000 in weekly revenue.</li>
-      <li>Run <code>/ipo &lt;ticker&gt; &lt;shares&gt; &lt;price&gt;</code> in-game.</li>
-      <li>10% of weekly shop revenue is paid to shareholders as dividend.</li>
-      <li>You keep majority control as long as you hold &gt;50% of shares.</li>
-    </ol>
+    <h2>What are stocks?</h2>
+    <p>Stocks let you invest in the server economy without running a shop yourself. Buy shares in a profitable shop and you receive a weekly dividend from its revenue. Share prices go up if the shop does well and down if trade drops off.</p>
+    <p>Index stocks like IRON and DIAMOND track the raw material market. They are a lower-risk way to hold value and speculate on price movements.</p>
   </section>
+
+  <section class="panel">
+    <h2>Taking your shop public (IPO)</h2>
+    <ol class="phases">
+      <li>Your QuickShop must have at least £500 in weekly revenue.</li>
+      <li>Run <code>/ipo &lt;ticker&gt; &lt;shares&gt; &lt;price&gt;</code> in-game to list your shares.</li>
+      <li>10% of your weekly shop revenue is distributed to shareholders as dividend every Monday.</li>
+      <li>You keep control of your shop as long as you hold more than 50% of shares.</li>
+    </ol>
+    <p class="note">Think carefully before going public. Shareholders will be watching your revenue. If your shop goes quiet, the share price drops and people will notice.</p>
+  </section>
+
 </main>
 <footer>
-  <span>£ Fisher Pound · </span>
-  <span>Made in Saffron Walden · </span>
+  <span>£ Fisher Pound</span>
+  <span>Made in Saffron Walden</span>
   <span><a href="https://github.com/s7612f/fisherworld-smp">source</a></span>
 </footer>
 <script src="script.js"></script>
