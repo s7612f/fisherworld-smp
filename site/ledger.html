@@ -17,7 +17,6 @@
     <a href="index.html">Home</a>
     <a href="market.html">Market</a>
     <a href="stocks.html">Stocks</a>
-    <a href="earn.html">Earn</a>
     <a href="ledger.html" class="active">Ledger</a>
     <a href="calendar.html">Calendar</a>
     <a href="https://github.com/s7612f/fisherworld-smp" target="_blank" rel="noopener">GitHub</a>
@@ -27,8 +26,7 @@
 
   <section class="panel">
     <h1>Public Ledger</h1>
-    <p>Every web-layer payout is logged here and visible to everyone. Chore verifications, daily check-ins, coaching hours, and mini-game wins all appear. Transparency is the anti-cheat.</p>
-    <p class="note">In-game transactions (shop sales, job wages, bounties) are separate and not shown here.</p>
+    <p>Recent player transactions on the server. Shop sales, job payouts, bounty completions, and auction house activity. Live data will appear here once the bridge is connected.</p>
   </section>
 
   <section class="panel">
@@ -37,6 +35,16 @@
         <tr><th>When</th><th>Player</th><th>Amount</th><th>Reason</th></tr>
       </thead>
       <tbody id="ledger-body"></tbody>
+    </table>
+  </section>
+
+  <section class="panel">
+    <h2>Balance top</h2>
+    <table class="mc">
+      <thead>
+        <tr><th>Rank</th><th>Player</th><th>Balance</th></tr>
+      </thead>
+      <tbody id="baltop-body"></tbody>
     </table>
   </section>
 
