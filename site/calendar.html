@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Calendar — Fisherworld SMP</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="block grass"></span>
+    <span class="title">FISHERWORLD</span>
+    <span class="sub">/ calendar</span>
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="market.html">Market</a>
+    <a href="stocks.html">Stocks</a>
+    <a href="earn.html">Earn</a>
+    <a href="ledger.html">Ledger</a>
+    <a href="calendar.html" class="active">Calendar</a>
+    <a href="https://github.com/s7612f/fisherworld-smp" target="_blank" rel="noopener">GitHub</a>
+  </nav>
+</header>
+
+<main class="stack">
+
+  <section class="panel">
+    <h1>Server Calendar</h1>
+    <p class="note">Scheduled events, recurring economy cycles, and upcoming milestones. All times UK (Europe/London).</p>
+
+    <div class="cal-legend">
+      <span class="dot dot-milestone"></span> Milestone
+      <span class="dot dot-economy"></span> Economy
+      <span class="dot dot-combat"></span> Combat
+      <span class="dot dot-community"></span> Community
+      <span class="dot dot-recurring"></span> Recurring
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="cal-nav">
+      <button id="cal-prev" class="cal-nav-btn">◀</button>
+      <h2 id="cal-month-label" style="margin:0;border:none;padding:0"></h2>
+      <button id="cal-next" class="cal-nav-btn">▶</button>
+    </div>
+
+    <div class="cal-grid" id="cal-grid"></div>
+  </section>
+
+  <section class="panel" id="day-detail" style="display:none">
+    <h2 id="day-detail-title">Events</h2>
+    <div id="day-detail-body"></div>
+  </section>
+
+  <section class="panel">
+    <h2>Upcoming events</h2>
+    <div id="upcoming-list"></div>
+  </section>
+
+  <section class="panel">
+    <h2>Recurring schedule</h2>
+    <table class="mc">
+      <thead>
+        <tr>
+          <th>When</th>
+          <th>Event</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Every Sunday 00:00</td><td>🏠 Plot rent due</td><td><span class="tag tag-economy">economy</span></td></tr>
+        <tr><td>Every Monday 00:00</td><td>💰 Stock dividends paid</td><td><span class="tag tag-economy">economy</span></td></tr>
+        <tr><td>Every Friday 19:00</td><td>⚡ Flash auction (3 items, 50% off)</td><td><span class="tag tag-economy">economy</span></td></tr>
+        <tr><td>Every Saturday</td><td>📋 Bounty board refresh</td><td><span class="tag tag-community">community</span></td></tr>
+        <tr><td>1st of month</td><td>📊 Jobs Reborn rate review</td><td><span class="tag tag-economy">economy</span></td></tr>
+        <tr><td>15th of month</td><td>📈 Secondary dividend sweep</td><td><span class="tag tag-economy">economy</span></td></tr>
+        <tr><td>Last Sunday of month</td><td>🏖️ Tax holiday weekend (48h)</td><td><span class="tag tag-community">community</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+<footer>
+  <span>£ Fisher Pound · </span>
+  <span>Made in Saffron Walden · </span>
+  <span><a href="https://github.com/s7612f/fisherworld-smp">source</a></span>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
