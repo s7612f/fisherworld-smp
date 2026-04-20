@@ -270,6 +270,211 @@ function setupBlockBreaker() {
   });
 }
 
+// ---------- events & calendar ----------
+
+const EVENTS = [
+  // ── Milestones ──────────────────────────────────────────────────
+  { date: "2026-04-20", type: "milestone", title: "🚀 Server Launch", desc: "Infrastructure live. Admin testing begins." },
+  { date: "2026-04-25", type: "milestone", title: "👥 Soft Launch", desc: "Friends + girlfriend invited. 4–6 players." },
+  { date: "2026-05-04", type: "milestone", title: "🏘️ Phase 2 — Towny Live", desc: "Land ownership, plot rent, and taxes go live. Saffron founded." },
+  { date: "2026-05-04", type: "economy",   title: "🌾 Farming Multiplier Week", desc: "3× Jobs Reborn pay for all Farming jobs. Lasts 7 days." },
+  { date: "2026-05-18", type: "milestone", title: "📈 Phase 3 — Markets Open", desc: "Auction house, StockMarket, and bank loans go live." },
+  { date: "2026-06-01", type: "milestone", title: "🌐 Phase 4 — Web Layer Live", desc: "Bridge service active. Chore verification open. Account linking enabled." },
+  { date: "2026-06-14", type: "combat",    title: "🐉 Dragon Reset #1", desc: "The End is wiped and regenerated. Race to the Dragon — prize chest for the killing party." },
+  { date: "2026-07-04", type: "community", title: "🗺️ World Border Expansion #1", desc: "Border grows from 3,000 to 3,500 blocks. New biomes unlocked. £200 founding grant for first new town." },
+  { date: "2026-08-03", type: "economy",   title: "⛏️ Mining Multiplier Week", desc: "3× Jobs Reborn pay for all Mining jobs. Lasts 7 days." },
+  { date: "2026-08-08", type: "combat",    title: "💀 Nether Incursion #1", desc: "Wither Hunt. £1000 prize pool split by damage dealt. £500 bonus for the killing blow." },
+  { date: "2026-09-01", type: "milestone", title: "⚔️ mcMMO Season 1 Begins", desc: "Skills leaderboard officially resets. Season 1 runs until Mar 2027." },
+  { date: "2026-09-20", type: "combat",    title: "🐉 Dragon Reset #2", desc: "The End wiped and regenerated. Second race." },
+  { date: "2026-10-03", type: "community", title: "🗺️ World Border Expansion #2", desc: "Border grows to 4,000 blocks. Mesa biomes accessible." },
+  { date: "2026-11-02", type: "economy",   title: "🏹 Hunting Multiplier Week", desc: "3× Jobs Reborn pay for all Hunting jobs. Lasts 7 days." },
+  { date: "2026-11-07", type: "combat",    title: "💀 Nether Incursion #2", desc: "Wither Hunt. £1500 prize pool — scales with server population." },
+  { date: "2026-12-13", type: "combat",    title: "🐉 Dragon Reset #3", desc: "The End wiped. Third race — End Cities full of loot again." },
+  { date: "2026-12-25", type: "community", title: "🎄 Christmas Event", desc: "Snow in spawn, double XP week, gift crates placed at spawn for all players." },
+  { date: "2027-01-03", type: "community", title: "🗺️ World Border Expansion #3", desc: "Border grows to 4,500 blocks." },
+  { date: "2027-02-01", type: "economy",   title: "🪵 Woodcutting Multiplier Week", desc: "3× Jobs Reborn pay for all Woodcutting jobs. Lasts 7 days." },
+];
+
+// Day-of-week recurring events (0=Sun … 6=Sat)
+const RECURRING_DOW = [
+  { dow: 0, type: "economy",   title: "🏠 Rent Due",            desc: "Towny charges all plot rent. 3 missed = eviction." },
+  { dow: 1, type: "economy",   title: "💰 Dividends Paid",      desc: "StockMarket pays weekly dividends to shareholders." },
+  { dow: 5, type: "economy",   title: "⚡ Flash Auction 7pm",   desc: "3–5 rare items at 50% market price in the auction house." },
+  { dow: 6, type: "community", title: "📋 Bounty Board Refresh", desc: "Old unclaimed bounties expire. New ones posted on Discord." },
+];
+
+// Day-of-month recurring events
+const RECURRING_DOM = [
+  { dom: 1,  type: "economy", title: "📊 Jobs Rate Review", desc: "Admin checks /baltop and adjusts Jobs Reborn pay rates." },
+  { dom: 15, type: "economy", title: "📈 Dividend Sweep",   desc: "Secondary dividend payout for any missed Monday sweeps." },
+];
+
+function getEventsForDate(year, month, day) {
+  const iso = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+  const fixed = EVENTS.filter(e => e.date === iso);
+
+  const d = new Date(year, month, day);
+  const dow = d.getDay();
+  const dowEvents = RECURRING_DOW.filter(e => e.dow === dow).map(e => ({ ...e, recurring: true }));
+
+  const domEvents = RECURRING_DOM.filter(e => e.dom === day).map(e => ({ ...e, recurring: true }));
+
+  // Last Sunday of month = tax holiday
+  const lastSundayEvents = [];
+  const isLastSunday = (() => {
+    if (dow !== 0) return false;
+    const nextWeek = new Date(year, month, day + 7);
+    return nextWeek.getMonth() !== month;
+  })();
+  if (isLastSunday) lastSundayEvents.push({ type: "community", title: "🏖️ Tax Holiday Weekend", desc: "No plot rent charged for 48h.", recurring: true });
+
+  return [...fixed, ...dowEvents, ...domEvents, ...lastSundayEvents];
+}
+
+function typeColour(type) {
+  return { milestone: "#9b59ff", economy: "#e6c65a", combat: "#c85a47", community: "#7cc867", recurring: "#5a8aff" }[type] || "#888";
+}
+
+let calYear, calMonth, selectedDay = null;
+
+function renderCalendar() {
+  const grid = document.getElementById("cal-grid");
+  const label = document.getElementById("cal-month-label");
+  if (!grid) return;
+
+  const now = new Date();
+  if (calYear === undefined) { calYear = now.getFullYear(); calMonth = now.getMonth(); }
+
+  const monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  label.textContent = `${monthNames[calMonth]} ${calYear}`;
+
+  grid.innerHTML = "";
+  const dows = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  dows.forEach(d => {
+    const el = document.createElement("div");
+    el.className = "cal-dow";
+    el.textContent = d;
+    grid.appendChild(el);
+  });
+
+  const firstDow = new Date(calYear, calMonth, 1).getDay();
+  const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+
+  for (let i = 0; i < firstDow; i++) {
+    const el = document.createElement("div");
+    el.className = "cal-day empty";
+    grid.appendChild(el);
+  }
+
+  for (let d = 1; d <= daysInMonth; d++) {
+    const el = document.createElement("div");
+    el.className = "cal-day";
+    const isToday = d === now.getDate() && calMonth === now.getMonth() && calYear === now.getFullYear();
+    if (isToday) el.classList.add("today");
+    if (selectedDay === d) el.classList.add("selected");
+
+    const numEl = document.createElement("div");
+    numEl.className = "cal-day-num";
+    numEl.textContent = d;
+    el.appendChild(numEl);
+
+    const evts = getEventsForDate(calYear, calMonth, d);
+    if (evts.length) {
+      const dots = document.createElement("div");
+      dots.className = "cal-dots";
+      const shown = evts.slice(0, 4);
+      shown.forEach(ev => {
+        const dot = document.createElement("div");
+        dot.className = "cal-dot";
+        dot.style.background = typeColour(ev.type);
+        dots.appendChild(dot);
+      });
+      el.appendChild(dots);
+    }
+
+    el.addEventListener("click", () => {
+      selectedDay = d;
+      renderCalendar();
+      showDayDetail(d, evts);
+    });
+
+    grid.appendChild(el);
+  }
+}
+
+function showDayDetail(day, evts) {
+  const panel = document.getElementById("day-detail");
+  const title = document.getElementById("day-detail-title");
+  const body  = document.getElementById("day-detail-body");
+  if (!panel) return;
+
+  const monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  title.textContent = `${day} ${monthNames[calMonth]} ${calYear}`;
+
+  if (!evts.length) {
+    panel.style.display = "block";
+    body.innerHTML = `<p class="note">No events scheduled.</p>`;
+    return;
+  }
+
+  panel.style.display = "block";
+  body.innerHTML = evts.map(ev => `
+    <div class="cal-event-item ${ev.type}">
+      <div class="evt-title">${ev.title}</div>
+      <div class="evt-desc">${ev.desc}</div>
+    </div>
+  `).join("");
+}
+
+function renderUpcoming() {
+  const el = document.getElementById("upcoming-list");
+  if (!el) return;
+  const now = new Date();
+  now.setHours(0, 0, 0, 0);
+
+  const future = EVENTS
+    .map(e => ({ ...e, d: new Date(e.date) }))
+    .filter(e => e.d >= now)
+    .sort((a, b) => a.d - b.d)
+    .slice(0, 8);
+
+  const monthNames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+  el.innerHTML = future.map(e => {
+    const diff = Math.round((e.d - now) / 86400000);
+    const diffStr = diff === 0 ? "today!" : diff === 1 ? "tomorrow" : `in ${diff} days`;
+    const dateStr = `${e.d.getDate()} ${monthNames[e.d.getMonth()]} ${e.d.getFullYear()}`;
+    return `
+      <div class="upcoming-item">
+        <div class="upcoming-date">${dateStr}</div>
+        <div>
+          <div class="upcoming-label"><span class="tag tag-${e.type}">${e.type}</span> ${e.title}</div>
+          <div class="upcoming-delta">${diffStr} · ${e.desc}</div>
+        </div>
+      </div>`;
+  }).join("");
+}
+
+function setupCalendarNav() {
+  const prev = document.getElementById("cal-prev");
+  const next = document.getElementById("cal-next");
+  if (!prev) return;
+  prev.addEventListener("click", () => {
+    calMonth--;
+    if (calMonth < 0) { calMonth = 11; calYear--; }
+    selectedDay = null;
+    renderCalendar();
+    document.getElementById("day-detail").style.display = "none";
+  });
+  next.addEventListener("click", () => {
+    calMonth++;
+    if (calMonth > 11) { calMonth = 0; calYear++; }
+    selectedDay = null;
+    renderCalendar();
+    document.getElementById("day-detail").style.display = "none";
+  });
+}
+
 // ---------- bootstrap ----------
 document.addEventListener("DOMContentLoaded", () => {
   animateTicker();
@@ -277,6 +482,9 @@ document.addEventListener("DOMContentLoaded", () => {
   renderStocks();
   renderLedger();
   renderEarn();
+  renderCalendar();
+  renderUpcoming();
+  setupCalendarNav();
 });
 
 window.handleLink = handleLink;
