@@ -258,6 +258,50 @@ table.mc th {
   padding: 12px 24px;
 }
 
+/* ----- join steps ----- */
+.join-steps { display: flex; flex-direction: column; gap: 14px; margin-top: 14px; }
+.join-step {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  background: var(--panel-2);
+  border: 2px solid var(--border);
+  padding: 14px 16px;
+}
+.step-num {
+  flex-shrink: 0;
+  width: 32px; height: 32px;
+  background: var(--grass-dk);
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 15px;
+  color: #fff;
+}
+.join-step strong { display: block; color: var(--gold); margin-bottom: 4px; }
+.join-step p { margin: 0; color: var(--ink); font-size: 13px; }
+
+/* ----- faq ----- */
+.faq-item {
+  border-bottom: 1px solid var(--border);
+  padding: 10px 0;
+}
+.faq-item:last-child { border-bottom: none; }
+.faq-item summary {
+  cursor: pointer;
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 14px;
+  list-style: none;
+  padding: 2px 0;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::before { content: "+ "; color: var(--muted); }
+.faq-item[open] summary::before { content: "- "; }
+.faq-item p { margin: 8px 0 4px 16px; font-size: 13px; color: var(--ink); }
+
 /* ----- tags ----- */
 .tag {
   display: inline-block;

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Market — Fisherworld SMP</title>
+<title>Market - Fisherworld SMP</title>
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -24,11 +24,13 @@
   </nav>
 </header>
 <main class="stack">
+
   <section class="panel">
-    <h1>Market</h1>
-    <p class="note">Top traded items in the last 24 hours. Prices discovered from QuickShop chest shops across the server. Shown as bid / ask with spread.</p>
-    <p class="note">Live data will appear here once the bridge is wired up. For now: seed values from the design doc.</p>
+    <h1>Market Prices</h1>
+    <p>Current buy and sell prices from player chest shops across the server. Prices are set by players, not admins. If something is cheap, someone is underselling. If it is expensive, there is a shortage.</p>
+    <p class="note">Bid = what players are paying. Ask = what players are selling for. Spread = the gap between them. Once the bridge is live, this will update every 60 seconds from the server.</p>
   </section>
+
   <section class="panel">
     <table class="mc">
       <thead>
@@ -37,10 +39,22 @@
       <tbody id="market-body"></tbody>
     </table>
   </section>
+
+  <section class="panel">
+    <h2>How to set up a shop</h2>
+    <ol class="phases">
+      <li>Place a chest anywhere in your plot.</li>
+      <li>Put the item you want to sell inside it.</li>
+      <li>Right-click the chest and follow the QuickShop prompts to set a price.</li>
+      <li>Players can buy from it while you are offline. Coins go straight to your balance.</li>
+    </ol>
+    <p class="note">You can also create a buying shop to purchase items from other players automatically.</p>
+  </section>
+
 </main>
 <footer>
-  <span>£ Fisher Pound · </span>
-  <span>Made in Saffron Walden · </span>
+  <span>£ Fisher Pound</span>
+  <span>Made in Saffron Walden</span>
   <span><a href="https://github.com/s7612f/fisherworld-smp">source</a></span>
 </footer>
 <script src="script.js"></script>

@@ -27,78 +27,151 @@
 <main class="stack">
 
   <section class="panel hero">
-    <h1>A Minecraft server<br/>with a <em>real</em> economy.</h1>
-    <p class="lede">
-      Player shops. Stock markets. Property taxes. Wage labour. Loans.
-      And a web layer that credits your in-game account for doing real things outside the game.
-    </p>
+    <h1>Fisherworld SMP</h1>
+    <p class="lede">A survival Minecraft server with a real economy. Own land, run shops, earn wages, take out loans, buy shares in other players' businesses, and earn in-game money from real-world effort.</p>
     <div class="ticker" id="ticker" aria-live="polite">
       <span>IRON £12.40 ▲</span>
       <span>GOLD £31.10 ▼</span>
       <span>DIAMOND £184.00 ▲</span>
-      <span>WHEAT £0.90 ▬</span>
+      <span>WHEAT £0.90 -</span>
       <span>NETHERITE £612.50 ▲</span>
       <span>EMERALD £44.00 ▼</span>
     </div>
   </section>
 
   <section class="panel">
-    <h2>The three layers</h2>
+    <h2>How to join</h2>
+    <div class="join-steps">
+      <div class="join-step">
+        <span class="step-num">1</span>
+        <div>
+          <strong>Get an invite from Seb</strong>
+          <p>This is a private server for friends. Ask Seb for the server IP and a Discord invite.</p>
+        </div>
+      </div>
+      <div class="join-step">
+        <span class="step-num">2</span>
+        <div>
+          <strong>Join the Discord</strong>
+          <p>All announcements, bounties, chore verification, and chat happen in Discord. You need it to get the most out of the server.</p>
+        </div>
+      </div>
+      <div class="join-step">
+        <span class="step-num">3</span>
+        <div>
+          <strong>Connect in Minecraft Java 1.21.x</strong>
+          <p>Add the server IP and join. You will spawn in Saffron, the starter town.</p>
+        </div>
+      </div>
+      <div class="join-step">
+        <span class="step-num">4</span>
+        <div>
+          <strong>Link your account to this site</strong>
+          <p>Run <code>/weblink</code> in-game to get a 6-digit code, then fill in the form below. You can then earn Fisher Pounds from this site without logging into Minecraft.</p>
+        </div>
+      </div>
+      <div class="join-step">
+        <span class="step-num">5</span>
+        <div>
+          <strong>Pick a job and start earning</strong>
+          <p>Run <code>/jobs browse</code> in-game. Pick two jobs. Mine, farm, hunt, or build to earn Fisher Pounds. You need £5/day to keep your plot in town.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>What makes this different</h2>
     <div class="cards">
       <article>
-        <h3>① Survival</h3>
-        <p>Vanilla 1.21.x. No fly, no teleport-to-anywhere, death still hurts. The block game stays sacred.</p>
+        <h3>Survival stays vanilla</h3>
+        <p>No creative, no /fly, death still hurts. The game underneath is just Minecraft 1.21.x. Everything else is layered on top without changing the core experience.</p>
       </article>
       <article>
-        <h3>② Economy</h3>
-        <p>Towny land with rent. Jobs Reborn wages. QuickShop chest shops. Banks with interest. A stock market with player IPOs.</p>
+        <h3>A real economy</h3>
+        <p>Fisher Pounds (£) are earned by working and spent on land, goods, and services. Rent is due every Sunday. Prices are set by players. Miss rent three times and you lose your plot.</p>
       </article>
       <article>
-        <h3>③ Web</h3>
-        <p>This site. Link your MC account, then earn Fisher Pounds via chores, daily check-ins, coaching-hours logged, and minigames.</p>
+        <h3>Earn outside the game</h3>
+        <p>Link your account here to earn £ from this site. Daily check-ins, mini-games, verified chores, and real work hours all pay out. Good if you want to stay in the economy without grinding Minecraft every day.</p>
       </article>
     </div>
   </section>
 
   <section class="panel">
-    <h2>Why this should work</h2>
+    <h2>Your first day</h2>
+    <ol class="phases">
+      <li>Spawn in Saffron. Check the notice board near spawn for current laws and open bounties.</li>
+      <li>Pick two jobs with <code>/jobs browse</code>. Start earning immediately from mining, farming, hunting, or building.</li>
+      <li>Rent a plot in town with <code>/plot claim</code>. Costs £5/day. This is your home base.</li>
+      <li>Visit the market district. Player chest shops sell tools and materials.</li>
+      <li>Check <code>#bounty-board</code> in Discord. Other players post paid contracts for resources they need.</li>
+      <li>Link your account below and claim your first daily check-in on the <a href="earn.html">Earn</a> page for a free £3.</li>
+    </ol>
+  </section>
+
+  <section class="panel">
+    <h2>How the economy works</h2>
     <ul class="bullets">
-      <li><b>Inflation discipline</b> — taps (wages, web earnings) balanced by drains (rent, fees, cosmetics).</li>
-      <li><b>Asymmetric roles</b> — miner, farmer, builder, shopkeeper, landlord, financier. The market rewards specialising.</li>
-      <li><b>Real stakes</b> — miss three days of rent, lose your house. That's the line between a game and a diorama.</li>
-      <li><b>Low-friction on-ramp</b> — a non-gamer partner can do dishes, earn coins, buy cosmetics, feel part of it.</li>
+      <li><b>Earning:</b> Jobs Reborn pays per action (ore mined, mob killed, crop harvested). You can also run chest shops, fill player contracts, collect stock dividends, or earn from this site.</li>
+      <li><b>Spending:</b> Plot rent is due every Sunday. Buy goods from other players. Fast travel costs money. Cosmetics are available as money sinks.</li>
+      <li><b>Property:</b> Towny manages land. Buy a plot in an existing town or found your own. Mayors set rent and rules.</li>
+      <li><b>Shops:</b> Place a chest, right-click it, and set a price. It sells to players while you are offline.</li>
+      <li><b>Stocks:</b> Once your shop earns enough, go public and issue shares. Other players buy in and earn weekly dividends.</li>
+      <li><b>Banks:</b> Deposit to earn 0.5% weekly interest. Take loans at 2% weekly. Miss repayments and your balance is frozen.</li>
     </ul>
   </section>
 
   <section class="panel">
-    <h2>The plan, at a glance</h2>
-    <ol class="phases">
-      <li><b>Phase 0</b> — Paper server up on fisherserver, playtest with 2.</li>
-      <li><b>Phase 1</b> — CMI + QuickShop + Jobs Reborn + BlueMap. Baseline economy.</li>
-      <li><b>Phase 2</b> — Towny. Land, rent, taxes.</li>
-      <li><b>Phase 3</b> — Auction house, stock market, banks with interest, bounty board.</li>
-      <li><b>Phase 4</b> — Web layer. This site + bridge service + Discord bot.</li>
-      <li><b>Phase 5</b> — Tune, adjust, add money sinks, run events.</li>
-    </ol>
-    <p class="note">Full write-ups in the <a href="https://github.com/s7612f/fisherworld-smp/blob/main/docs/PLAN.md">repo docs</a>.</p>
+    <h2>Upcoming events</h2>
+    <div id="upcoming-list-home"></div>
+    <p class="note" style="margin-top:12px">Full schedule on the <a href="calendar.html">Calendar</a> page.</p>
   </section>
 
   <section class="panel link-box">
     <h2>Link your account</h2>
-    <p>In-game, run <code>/weblink</code> to get a 6-digit code. Paste it here with your username.</p>
+    <p>Run <code>/weblink</code> in-game to get your 6-digit code, then enter it here to connect your Minecraft account to this site.</p>
     <form id="linkform" onsubmit="return handleLink(event)">
       <label>Minecraft username <input required name="username" placeholder="Steve_" /></label>
       <label>Code <input required name="code" placeholder="123456" pattern="[0-9]{6}" /></label>
-      <button type="submit">Link</button>
+      <button type="submit">Link account</button>
     </form>
     <p id="linkstatus" class="status"></p>
+  </section>
+
+  <section class="panel">
+    <h2>FAQ</h2>
+    <details class="faq-item">
+      <summary>Do I need to pay real money for anything?</summary>
+      <p>No. Fisher Pounds (£) are an in-game currency only. Nothing costs real money. Donations are cosmetics-only and never required.</p>
+    </details>
+    <details class="faq-item">
+      <summary>What if I cannot play much? Will I lose my stuff?</summary>
+      <p>Your inventory is safe. The only thing that needs attention is plot rent (£5/day). If you are going away, tell Seb and it can be paused. You can also earn rent money from this site without logging into Minecraft.</p>
+    </details>
+    <details class="faq-item">
+      <summary>I do not like PvP. Is it forced?</summary>
+      <p>No. PvP is disabled inside all towns. It is only on in the wilderness and in dedicated arenas. You can play the whole economy without ever fighting another player.</p>
+    </details>
+    <details class="faq-item">
+      <summary>What is this website for?</summary>
+      <p>It is a companion site that connects to your Minecraft account. Earn small amounts of in-game money by checking in daily, playing browser mini-games, logging real-world tasks (chores, gym sessions), or logging work hours. Especially useful if you want to stay involved without playing Minecraft every day.</p>
+    </details>
+    <details class="faq-item">
+      <summary>How do I earn money without mining?</summary>
+      <p>Run a chest shop and sell to miners. Fill contracts on the bounty board. Buy shares in profitable shops and collect dividends. Lend money to other players at interest. Or use this site to earn from chores and daily check-ins.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Where do I see what is happening on the server?</summary>
+      <p>The <a href="market.html">Market</a> page shows current item prices. The <a href="stocks.html">Stocks</a> page shows share prices. The <a href="ledger.html">Ledger</a> shows recent payouts. The <a href="calendar.html">Calendar</a> shows upcoming events. The Discord server has live chat and announcements.</p>
+    </details>
   </section>
 
 </main>
 
 <footer>
-  <span>£ Fisher Pound · </span>
-  <span>Made in Saffron Walden · </span>
+  <span>£ Fisher Pound</span>
+  <span>Made in Saffron Walden</span>
   <span><a href="https://github.com/s7612f/fisherworld-smp">source</a></span>
 </footer>
 

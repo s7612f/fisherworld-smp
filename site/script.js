@@ -1,4 +1,4 @@
-// Fisherworld site — demo logic. No real bridge yet; uses mock data + localStorage.
+// Fisherworld site - demo logic. No real bridge yet; uses mock data + localStorage.
 // When the bridge is live, replace MOCK=true and point API at mc-bridge.sebastian-fisher.com.
 
 const MOCK = true;
@@ -160,7 +160,7 @@ function renderEarn() {
   const user = localStorage.getItem("fw_user");
   const greeting = $("#greeting");
   if (user) greeting.textContent = `logged in as ${user}`;
-  else greeting.textContent = "not linked — link on the home page first";
+  else greeting.textContent = "not linked - link on the home page first";
 
   const claimedKey = `fw_daily_${today()}`;
   if (localStorage.getItem(claimedKey)) {
@@ -202,7 +202,7 @@ function setupCoachingForm() {
     btn.disabled = true;
     btn.textContent = "logging…";
     await new Promise(r => setTimeout(r, 600));
-    logEarn(`+£${amount.toFixed(2)} ${note} (coaching — pending bridge)`);
+    logEarn(`+£${amount.toFixed(2)} ${note} (coaching - pending bridge)`);
     form.reset();
     btn.disabled = false;
     btn.textContent = "log it";
@@ -265,7 +265,7 @@ function setupBlockBreaker() {
       startBtn.textContent = "play again";
       const earned = Math.min(Math.round(score * 0.5 * 10) / 10, 10);
       logEarn(`+£${earned} block breaker (${score} hits)`);
-      alert(`round over — ${score} hits = £${earned}`);
+      alert(`round over - ${score} hits = £${earned}`);
     }, 20000);
   });
 }
@@ -276,11 +276,11 @@ const EVENTS = [
   // ── Milestones ──────────────────────────────────────────────────
   { date: "2026-04-20", type: "milestone", title: "🚀 Server Launch", desc: "Infrastructure live. Admin testing begins." },
   { date: "2026-04-25", type: "milestone", title: "👥 Soft Launch", desc: "Friends + girlfriend invited. 4–6 players." },
-  { date: "2026-05-04", type: "milestone", title: "🏘️ Phase 2 — Towny Live", desc: "Land ownership, plot rent, and taxes go live. Saffron founded." },
+  { date: "2026-05-04", type: "milestone", title: "🏘️ Phase 2 - Towny Live", desc: "Land ownership, plot rent, and taxes go live. Saffron founded." },
   { date: "2026-05-04", type: "economy",   title: "🌾 Farming Multiplier Week", desc: "3× Jobs Reborn pay for all Farming jobs. Lasts 7 days." },
-  { date: "2026-05-18", type: "milestone", title: "📈 Phase 3 — Markets Open", desc: "Auction house, StockMarket, and bank loans go live." },
-  { date: "2026-06-01", type: "milestone", title: "🌐 Phase 4 — Web Layer Live", desc: "Bridge service active. Chore verification open. Account linking enabled." },
-  { date: "2026-06-14", type: "combat",    title: "🐉 Dragon Reset #1", desc: "The End is wiped and regenerated. Race to the Dragon — prize chest for the killing party." },
+  { date: "2026-05-18", type: "milestone", title: "📈 Phase 3 - Markets Open", desc: "Auction house, StockMarket, and bank loans go live." },
+  { date: "2026-06-01", type: "milestone", title: "🌐 Phase 4 - Web Layer Live", desc: "Bridge service active. Chore verification open. Account linking enabled." },
+  { date: "2026-06-14", type: "combat",    title: "🐉 Dragon Reset #1", desc: "The End is wiped and regenerated. Race to the Dragon - prize chest for the killing party." },
   { date: "2026-07-04", type: "community", title: "🗺️ World Border Expansion #1", desc: "Border grows from 3,000 to 3,500 blocks. New biomes unlocked. £200 founding grant for first new town." },
   { date: "2026-08-03", type: "economy",   title: "⛏️ Mining Multiplier Week", desc: "3× Jobs Reborn pay for all Mining jobs. Lasts 7 days." },
   { date: "2026-08-08", type: "combat",    title: "💀 Nether Incursion #1", desc: "Wither Hunt. £1000 prize pool split by damage dealt. £500 bonus for the killing blow." },
@@ -288,8 +288,8 @@ const EVENTS = [
   { date: "2026-09-20", type: "combat",    title: "🐉 Dragon Reset #2", desc: "The End wiped and regenerated. Second race." },
   { date: "2026-10-03", type: "community", title: "🗺️ World Border Expansion #2", desc: "Border grows to 4,000 blocks. Mesa biomes accessible." },
   { date: "2026-11-02", type: "economy",   title: "🏹 Hunting Multiplier Week", desc: "3× Jobs Reborn pay for all Hunting jobs. Lasts 7 days." },
-  { date: "2026-11-07", type: "combat",    title: "💀 Nether Incursion #2", desc: "Wither Hunt. £1500 prize pool — scales with server population." },
-  { date: "2026-12-13", type: "combat",    title: "🐉 Dragon Reset #3", desc: "The End wiped. Third race — End Cities full of loot again." },
+  { date: "2026-11-07", type: "combat",    title: "💀 Nether Incursion #2", desc: "Wither Hunt. £1500 prize pool - scales with server population." },
+  { date: "2026-12-13", type: "combat",    title: "🐉 Dragon Reset #3", desc: "The End wiped. Third race - End Cities full of loot again." },
   { date: "2026-12-25", type: "community", title: "🎄 Christmas Event", desc: "Snow in spawn, double XP week, gift crates placed at spawn for all players." },
   { date: "2027-01-03", type: "community", title: "🗺️ World Border Expansion #3", desc: "Border grows to 4,500 blocks." },
   { date: "2027-02-01", type: "economy",   title: "🪵 Woodcutting Multiplier Week", desc: "3× Jobs Reborn pay for all Woodcutting jobs. Lasts 7 days." },
@@ -427,8 +427,11 @@ function showDayDetail(day, evts) {
 }
 
 function renderUpcoming() {
-  const el = document.getElementById("upcoming-list");
+  const elCalendar = document.getElementById("upcoming-list");
+  const elHome = document.getElementById("upcoming-list-home");
+  const el = elCalendar || elHome;
   if (!el) return;
+  const isHome = !!elHome && !elCalendar;
   const now = new Date();
   now.setHours(0, 0, 0, 0);
 
@@ -436,7 +439,7 @@ function renderUpcoming() {
     .map(e => ({ ...e, d: new Date(e.date) }))
     .filter(e => e.d >= now)
     .sort((a, b) => a.d - b.d)
-    .slice(0, 8);
+    .slice(0, isHome ? 4 : 8);
 
   const monthNames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
