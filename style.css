@@ -141,6 +141,11 @@ main.stack {
 .bullets { padding-left: 18px; }
 .bullets li { margin-bottom: 8px; }
 
+.data-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 14px; }
+.data-table th { background: var(--panel-2); color: var(--gold); text-align: left; padding: 6px 10px; border-bottom: 2px solid #000; }
+.data-table td { padding: 5px 10px; border-bottom: 1px solid #0f0b08; color: var(--ink); }
+.data-table tr:last-child td { border-bottom: none; }
+
 .phases { padding-left: 22px; }
 .phases li { margin-bottom: 6px; }
 
