@@ -125,12 +125,15 @@ function renderStocks() {
 
 // ---------- ledger ----------
 const LEDGER_SEED = [
-  { user: "Sebastian", amount: 8, reason: "sold 32x iron ingot @ 0.25ea", ago: "4m" },
-  { user: "Lola", amount: 3, reason: "daily check-in", ago: "14m" },
-  { user: "Tom", amount: 1.50, reason: "mined 6 diamonds (Jobs)", ago: "1h" },
+  { user: "Lola", amount: 12, reason: "gym session (verified by Sebastian)", ago: "3m" },
+  { user: "Sebastian", amount: 8, reason: "sold 32x iron ingot @ 0.25ea", ago: "14m" },
+  { user: "Tom", amount: 3, reason: "daily check-in", ago: "1h" },
   { user: "Lola", amount: 8, reason: "block breaker minigame", ago: "2h" },
-  { user: "Sebastian", amount: 40, reason: "bounty: 2 stacks iron delivered", ago: "4h" },
-  { user: "Tom", amount: 75, reason: "bug bounty: quickshop price parse", ago: "1d" },
+  { user: "Sebastian", amount: 20, reason: "2h coaching prep (self-reported)", ago: "4h" },
+  { user: "Lola", amount: 5, reason: "dishes (verified by Tom)", ago: "5h" },
+  { user: "Tom", amount: 40, reason: "bounty: 2 stacks iron delivered", ago: "6h" },
+  { user: "Sebastian", amount: 75, reason: "bug bounty: quickshop price parse", ago: "1d" },
+  { user: "Tom", amount: 1.50, reason: "mined 6 diamonds (Jobs)", ago: "1d" },
   { user: "Lola", amount: 0.80, reason: "sold 8x wheat @ 0.10ea", ago: "1d" },
 ];
 function renderLedger() {
@@ -173,6 +176,7 @@ function renderEarn() {
   });
 
   setupBlockBreaker();
+  setupCoachingForm();
 }
 
 function logEarn(msg) {
@@ -181,6 +185,28 @@ function logEarn(msg) {
   const line = document.createElement("div");
   line.textContent = `[${new Date().toLocaleTimeString("en-GB")}] ${msg}`;
   log.prepend(line);
+}
+
+function setupCoachingForm() {
+  const form = $("#coaching-form");
+  if (!form) return;
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
+    const amount = parseFloat($("#coaching-amount").value);
+    const note = $("#coaching-note").value.trim() || "coaching session";
+    if (!amount || amount < 1 || amount > 40) {
+      alert("Enter an amount between £1 and £40.");
+      return;
+    }
+    const btn = form.querySelector("button");
+    btn.disabled = true;
+    btn.textContent = "logging…";
+    await new Promise(r => setTimeout(r, 600));
+    logEarn(`+£${amount.toFixed(2)} ${note} (coaching — pending bridge)`);
+    form.reset();
+    btn.disabled = false;
+    btn.textContent = "log it";
+  });
 }
 
 function setupBlockBreaker() {

@@ -27,31 +27,58 @@
   <section class="panel">
     <h1>Earn Fisher Pounds</h1>
     <p class="note" id="greeting">not linked — link on the home page first</p>
-    <p class="note">All earning happens in-game. This page tracks your web check-in bonus and mini-games — everything else comes from Jobs Reborn, chest shops, and player contracts on the server.</p>
   </section>
 
   <section class="panel">
     <h2>Daily check-in</h2>
-    <p>Log in here once a day for a small bonus deposited next time you join the server. Streaks pay extra (+£10 on day 7, +£75 on day 30).</p>
+    <p>Show up, get £3. Streaks pay extra (+£10 on day 7, +£75 on day 30).</p>
     <button id="daily-btn" class="daily-btn">claim today's £3</button>
   </section>
 
   <section class="panel">
     <h2>Block Breaker</h2>
-    <p>20 seconds. Click the green blocks as they appear. £0.50 per hit, capped at £10. One credited round per day — practice as much as you like.</p>
+    <p>20 seconds. Click the green blocks as they appear. £0.50 per hit, capped at £10 per round. One credited round per day — practice as many as you like.</p>
     <p><span class="score">score: <span id="bb-score">0</span></span></p>
     <div id="bb-grid" class="game-grid"></div>
     <button id="bb-start">start round</button>
   </section>
 
   <section class="panel">
-    <h2>How to earn in-game</h2>
+    <h2>Chore verification</h2>
+    <p>Post <code>!chore &lt;category&gt;</code> in <code>#fisherworld</code> on Discord. Another linked player reacts ✅ to confirm — coins land in-game next login.</p>
+    <table class="data-table">
+      <thead><tr><th>Chore</th><th>Pay</th></tr></thead>
+      <tbody>
+        <tr><td>Washed up / dishwasher</td><td>£5</td></tr>
+        <tr><td>Cooked dinner</td><td>£8</td></tr>
+        <tr><td>Walked the dog</td><td>£3</td></tr>
+        <tr><td>Gym session (≥30 min)</td><td>£12</td></tr>
+        <tr><td>2h study / coaching prep</td><td>£20</td></tr>
+        <tr><td>Cleaned the bathroom</td><td>£10</td></tr>
+        <tr><td>Food shop done</td><td>£6</td></tr>
+      </tbody>
+    </table>
+    <p class="note">You cannot verify your own chore. All payouts go to the public ledger.</p>
+  </section>
+
+  <section class="panel">
+    <h2>Coaching / work hours</h2>
+    <p>Self-report Cambly or coaching sessions at £1 Fisher per £1 real, capped at £40/day. Goes on the public ledger — honour system among friends.</p>
+    <form id="coaching-form" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+      <input type="number" id="coaching-amount" min="1" max="40" placeholder="£ earned today" style="width:150px;background:#1a1209;border:2px solid #5a3e1b;color:#e8d5a3;padding:6px 10px;font-family:inherit;font-size:14px" />
+      <input type="text" id="coaching-note" placeholder="e.g. 2× Cambly sessions" style="flex:1;min-width:160px;background:#1a1209;border:2px solid #5a3e1b;color:#e8d5a3;padding:6px 10px;font-family:inherit;font-size:14px" />
+      <button type="submit" class="daily-btn" style="margin:0">log it</button>
+    </form>
+  </section>
+
+  <section class="panel">
+    <h2>In-game earning (reminder)</h2>
     <ul class="bullets">
-      <li><strong>Jobs Reborn</strong> — mine, farm, hunt, fish, build. Pick two jobs at a time.</li>
-      <li><strong>Chest shops</strong> — sell goods to other players in your own shop.</li>
-      <li><strong>Bounty board</strong> — take open contracts from other players in <code>#bounty-board</code>.</li>
-      <li><strong>Stock dividends</strong> — hold shares in profitable shops, collect weekly payouts.</li>
-      <li><strong>Player loans</strong> — lend your balance to other players at interest via the bank.</li>
+      <li><strong>Jobs Reborn</strong> — mine, farm, hunt, fish, build. Pick two jobs.</li>
+      <li><strong>Chest shops</strong> — sell goods to other players.</li>
+      <li><strong>Bounty board</strong> — take open contracts in <code>#bounty-board</code>.</li>
+      <li><strong>Stock dividends</strong> — hold shares, collect weekly payouts.</li>
+      <li><strong>Player loans</strong> — lend to others via the bank at interest.</li>
     </ul>
   </section>
 

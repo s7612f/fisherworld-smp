@@ -1,100 +1,144 @@
 # Fisherworld SMP — Master Plan
 
-## Goal
+## What This Is
 
-Run a Minecraft server on `fisherserver` for Seb + friends + girlfriend that stays interesting past the honeymoon week. The hook: **a real economy**, not a token one. Scarcity, property, wages, markets, debt, and a web layer that converts real-world effort into in-game wealth.
+A proper long-term SMP on `fisherserver` — not a test world that dies after a month. Built around a real economy (scarcity, property, wages, markets, debt), a full survival experience with custom terrain and events, and a web layer that lets real-world effort convert to in-game wealth.
 
-Small player count (5–10) means we don't need enterprise infra. We do need the systems to feel *alive* — a stock ticker moves even when you're logged out, rent comes due on Sunday, the bounty board always has work.
-
----
-
-## The Three Layers
-
-### 1. Survival Layer (unchanged Minecraft)
-Vanilla 1.21.x survival. Keep the block game sacred. No creative flight, no /fly, no teleports-to-anywhere. Death still hurts.
-
-### 2. Economy Layer (in-game capitalism)
-Built from off-the-shelf plugins glued together. See [ECONOMY.md](ECONOMY.md) for the detailed mechanics. Headlines:
-
-- **Currency:** Fisher Pounds (£). Earned via Jobs Reborn, trading, wages.
-- **Property:** Towny handles plot ownership, rent, and taxes. Non-payment = eviction.
-- **Shops:** QuickShop-Hikari chest shops. Player-set prices. Market forces.
-- **Stock market:** StockMarket plugin. Player-run shops can go public and issue shares.
-- **Banks:** CMI's economy module handles interest-bearing accounts and loans.
-- **Jobs:** Jobs Reborn pays for labour. Players can also post private contracts via bounty board.
-- **Auction house:** Global market for rare items.
-- **Taxation:** Towny nation taxes fund town upkeep. Optional sales tax on shops.
-
-### 3. Web Layer (the novel bit)
-A static site on GitHub Pages + a small bridge service on `fisherserver` behind Cloudflare Tunnel. See [OUT-OF-GAME.md](OUT-OF-GAME.md).
-
-- Players link their Minecraft account to a web profile via a one-time code.
-- Web actions (verified chores, daily check-ins, mini-games, coaching hours logged) call the bridge, which RCONs a `pay` command into the server.
-- The Pages site also shows live state: current prices, stock ticker, leaderboard, town map.
+Target player count: 5–15. Small enough that everyone knows each other, large enough for the economy to be interesting.
 
 ---
 
-## Why This Should Actually Work
+## The Four Layers
 
-**Inflation discipline.** Jobs Reborn + web earnings inject currency; Towny rent + bank fees + auction cuts drain it. Tune the taps so prices don't spiral.
+### 1. World Layer — it has to be beautiful and dangerous
 
-**Asymmetric roles.** Miner, farmer, builder, shopkeeper, landlord, financier. Everyone ends up specialising because the market rewards it. This is the thing that keeps people logging in.
+Custom terrain gen via **Terra** (better than vanilla, no performance cost). The seed is hand-picked for:
+- A large ocean biome near spawn → island towns are possible
+- A nearby savanna plateau → natural defensive city site
+- Deep cave systems within 500 blocks → early mining is rewarding
+- A mesa/badlands within 1000 blocks → natural gold rush event
 
-**Real stakes.** If you don't pay rent, you lose your house. That's the difference between a game and a diorama.
+World border starts at 3,000 blocks radius. Expands quarterly as a server event. Nether and End never reset — they're canon.
 
-**Girlfriend-friendly on-ramp.** She doesn't have to grind for 40 hours to own a diamond pickaxe. She does the dishes, gets credit on the web, buys one. Social glue, not a chore.
+Starter spawn is a small village (pre-built by admin before opening day) with:
+- A notice board with current laws and bounties
+- A bank branch (NPC, Vault-backed)
+- A small market stall district
+- A public mine entrance (depletes — people actually need to go further out)
+- A tavern (cosmetic, but has a jukebox and a board for player messages)
+
+### 2. Survival Layer — keep the block game sacred
+
+Vanilla 1.21.x survival rules. No creative, no /fly outside of admin. Death hurts (graves plugin to recover items, but XP is gone). PvP is region-flagged: safe in towns, enabled in the wilderness and in dedicated arenas.
+
+**Custom events run quarterly:**
+- **Dragon Reset** — End is reset, a server-wide expedition organised, prizes for the kill group
+- **Nether Incursion** — Wither spawned in the Nether, bounty posted on Discord, first group to kill it claims a chest of rare loot
+- **World Border Expansion** — new biomes unlocked, admin-run land rush where unclaimed plots go to first settlers
+- **Seasonal market events** — double Jobs Reborn pay in one category for a week, rotates each quarter
+
+### 3. Economy Layer — real capitalism, small scale
+
+See [ECONOMY.md](ECONOMY.md) for full mechanics. Summary:
+
+- **Currency:** Fisher Pounds (£). Earned in-game via Jobs, shops, contracts. Earned out-of-game via web layer.
+- **Property:** Towny — plots, rent, nation taxes, town upkeep. Miss rent → eviction → auction.
+- **Shops:** QuickShop-Hikari chest shops. Player-set prices. Supply and demand actually moves.
+- **Stock market:** Player-run shops can IPO and issue shares. Dividends paid weekly from shop revenue.
+- **Banks:** CMI economy — interest-bearing deposits, player-to-player loans, withdrawal fees as a money sink.
+- **Jobs:** Jobs Reborn pays for labour. Seven jobs, pick two. Private contracts via bounty board.
+- **Auction house:** Global market for rare and bulk items.
+- **Taxation:** Towny nation taxes fund town upkeep. Optional sales tax per town.
+- **Skills:** mcMMO adds a parallel progression layer — the more you mine/fight/fish, the better you get at it. Creates meaningful specialisation even without economy.
+
+### 4. Web Layer — the novel part
+
+Real-world effort → in-game currency. See [OUT-OF-GAME.md](OUT-OF-GAME.md).
+
+A static site on GitHub Pages + bridge service on `fisherserver` behind Cloudflare Tunnel. Players link their Minecraft account once, then:
+- Daily check-ins drop small bonuses
+- Verified real-world tasks (chores, gym, study) pay meaningful amounts
+- Browser mini-games pay pocket change
+- Work hours (coaching, Cambly) pay at parity with real earnings
+
+The site also shows live state: market prices, stock ticker, leaderboard, BlueMap, bounty board.
+
+---
+
+## Why It Should Stay Alive Past Month One
+
+**Asymmetric roles.** Miner, farmer, builder, shopkeeper, landlord, banker, mercenary. The economy rewards specialisation. Once someone has a profitable shop, they're invested. Once someone has a loan out to another player, they care about that player logging in.
+
+**Real stakes.** Miss rent → lose your house. Take out a loan you can't repay → frozen balance. This is the difference between a game and a diorama.
+
+**External earning.** The web layer means the server has a presence when you're not playing. Girlfriend doing the dishes earns while you're mining. The economy ticks even offline.
+
+**Events calendar.** A server with nothing scheduled dies. A server with a Dragon Reset coming up on the 15th has people planning expeditions.
+
+**mcMMO progression.** Long-term skill grind gives veterans something to show for their time beyond wealth. Skill leaderboard is a second status axis.
 
 ---
 
 ## Build Order
 
-Phased so nothing is wasted if we stop early.
-
 ### Phase 0 — Server up (day 1)
-- Install Paper 1.21.x on `fisherserver`.
-- Open port 25565 via Cloudflare Tunnel or direct NAT.
-- LuckPerms + EssentialsX baseline.
-- Playtest with 2 people for one evening. Prove it's fun before adding systems.
+- Paper 1.21.x on `fisherserver` (Docker Compose, see [SETUP.md](SETUP.md))
+- LuckPerms + EssentialsX + EssentialsX-Spawn
+- GrimAC anti-cheat
+- CoreProtect logging
+- Test: two players, one evening. Is it fun? Fix whatever isn't before continuing.
 
 ### Phase 1 — Economy baseline (week 1)
-- Vault + CMI (economy).
-- QuickShop-Hikari (shops).
-- Jobs Reborn (wages).
-- BlueMap (public web map).
-- This is already a noticeably better SMP than most.
+- Vault + CMI-Lite (economy)
+- QuickShop-Hikari (shops)
+- Jobs Reborn (wages)
+- BlueMap (web map)
+- Graves (item recovery on death)
+- DiscordSRV (chat ↔ Discord)
+- Pre-build spawn village before inviting anyone
 
-### Phase 2 — Property & governance (week 2)
-- Towny (land, rent, taxes).
-- Seed one town that everyone starts in. Let a second form organically.
+### Phase 2 — Land & governance (week 2)
+- Towny Advanced + TownyChat
+- Seed the first town (Saffron) with pre-built market district
+- Set town plot prices and daily rent
 
 ### Phase 3 — Financial instruments (week 3)
-- Auction house plugin.
-- StockMarket plugin.
-- CMI bank accounts with interest.
-- Bounty board (either a plugin or a Discord bot).
+- AuctionHouse
+- StockMarket plugin
+- CMI bank accounts with interest
+- Bounty board (Discord bot or plugin)
 
-### Phase 4 — Web layer (week 4)
-- GitHub Pages site live with docs + BlueMap embed + live leaderboard.
-- Bridge service on fisherserver (see [bridge/](../bridge/)).
-- Discord bot for chore verification.
-- Link-your-account flow.
+### Phase 4 — Skills & content (week 4)
+- mcMMO (skill trees — mining, combat, fishing, etc.)
+- Terra (custom terrain gen — requires new world or reset; do this before players settle)
+- Custom item shops in spawn (lore books, cosmetics as money sinks)
 
-### Phase 5 — Tuning (ongoing)
-- Watch the money supply. Adjust Jobs Reborn rates weekly.
-- Add cosmetic perks as money sinks.
-- Run quarterly events: tax holidays, stock splits, land auctions.
+### Phase 5 — Web layer (month 2)
+- GitHub Pages site live (already done)
+- Bridge service on fisherserver
+- Discord bot for chore verification
+- Account link flow (/weblink)
+- Live leaderboard + market ticker pulling from bridge
+
+### Phase 6 — Events & polish (ongoing)
+- First Dragon Reset event
+- First World Border Expansion
+- Seasonal Jobs Reborn multiplier weeks
+- Track /balancetop weekly, adjust rates
 
 ---
 
 ## Success Criteria
 
-- All 5–10 invited players log in at least weekly for a month.
-- At least one player specialises into a non-combat role (shopkeeper / banker / farmer-for-hire).
-- The stock market has at least one real listing with actual trade volume.
-- Girlfriend uses the web-earning layer at least once without being prompted.
+- All invited players log in at least weekly for 6 weeks
+- At least one player specialises as shopkeeper / banker / farmer-for-hire
+- The stock market has at least one real listing with actual trade volume
+- Girlfriend uses the web layer at least once without prompting
+- The server survives a 2-week "quiet period" and comes back for an event
 
-## Anti-goals
+## Hard Anti-Goals
 
-- No pay-to-win with real money. Web earnings must come from effort, not cash.
-- No grind-for-grind's-sake. If a system isn't producing interesting player behaviour in 2 weeks, cut it.
-- No crypto. No NFTs. No blockchain. Just spreadsheets dressed up as a village.
+- No pay-to-win with real money. Donations = cosmetics only.
+- No grind-for-grind's-sake. If a system produces no interesting behaviour in 2 weeks, remove it.
+- No crypto, NFTs, or blockchain. Just spreadsheets dressed as a village.
+- Never wipe the economy without 2 weeks' notice and a server vote.
